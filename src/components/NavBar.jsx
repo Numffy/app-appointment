@@ -11,26 +11,26 @@ async function NavBar() {
         {!session?.user ? (
           <>
             {" "}
-            <li className="flex bg-black px-3 py-5 rounded-xl justify-center items-center">
+            <li className="flex bg-black text-white px-3 py-5 rounded-xl justify-center items-center">
               <Link href="/">Inicio</Link>
             </li>
-            <li className="flex bg-black px-3 py-5 rounded-xl justify-center items-center">
+            <li className="flex bg-black text-white  px-3 py-5 rounded-xl justify-center items-center">
               <Link href="/auth/login">Inicias Sesion</Link>
             </li>
-            <li className="flex bg-black px-3 py-5 rounded-xl justify-center items-center">
+            <li className="flex bg-black text-white px-3 py-5 rounded-xl justify-center items-center">
               <Link href="/auth/register">Registrarse</Link>
             </li>
           </>
         ) : (
           <>
-            <li className="flex bg-black px-3 py-5 rounded-xl justify-center items-center">
+            <li className="flex bg-black text-white px-3 py-5 rounded-xl justify-center items-center">
               <Link href="/">Inicio</Link>
             </li>
 
-            <li className="flex bg-black px-3 py-5 rounded-xl justify-center items-center">
+            <li className="flex bg-black text-white px-3 py-5 rounded-xl justify-center items-center">
               <Link href="/dashboard">Dashboard</Link>
             </li>
-            <li className="flex bg-black px-3 py-5 rounded-xl justify-center items-center">
+            <li className="flex bg-black text-white px-3 py-5 rounded-xl justify-center items-center">
               <Link href="/api/auth/signout">Cerrar Sesion</Link>
             </li>
           </>

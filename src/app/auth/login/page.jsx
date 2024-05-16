@@ -33,7 +33,7 @@ function LoginPage() {
   });
   return (
     <div className="h-[calc(100vh-0rem)] flex justify-center items-center">
-      <form className="w-1/4" onSubmit={onSubmit}>
+      <form className="w-1/4 bg-slate-400 p-10 rounded-3xl" onSubmit={onSubmit}>
         {error && (
           <span className="bg-red-500 p-2 block mb-4 rounded-md font-bold">
             Usuario o Contraseña Incorrecto
@@ -41,7 +41,7 @@ function LoginPage() {
         )}
         <h1 className="text-4xl font-bold mb-4">Iniciar Sesion</h1>
         <label
-          className="font-bold text-slate-500 mb-2 block text-sm"
+          className="font-bold text-white mb-2 block text-sm"
           htmlFor="email"
         >
           Email
@@ -64,7 +64,7 @@ function LoginPage() {
         )}
 
         <label
-          className="font-bold text-slate-500 mb-2 block text-sm"
+          className="font-bold text-white mb-2 block text-sm"
           htmlFor="password"
         >
           Password

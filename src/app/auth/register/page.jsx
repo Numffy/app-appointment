@@ -45,7 +45,7 @@ function RegisterPage() {
 
   return (
     <div className="h-[calc(100vh-1rem)] flex justify-center items-center ">
-      <form onSubmit={onSubmit} className="w-1/4">
+      <form onSubmit={onSubmit} className="w-1/4 bg-slate-400 p-10 rounded-3xl">
         {ErrorEmail && (
           <span className="bg-red-500 p-2 block mb-4 rounded-md font-bold">
             Este Email ya se encuentra en uso
