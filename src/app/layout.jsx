@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SessionAuthProvider from "../context/SessionProvider";
-import Navbar from "../components/Navbar";
+import ClientNavbar from "../components/ClientNavbar";
 import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <main className="flex-grow">
           <SessionAuthProvider>
-            <Navbar />
+            <ClientNavbar />
             {children}
           </SessionAuthProvider>
         </main>
