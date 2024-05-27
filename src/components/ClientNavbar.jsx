@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-function ClientNavBar({ session }) {
+function ClientNavbar({ session }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -68,4 +68,4 @@ function ClientNavBar({ session }) {
   );
 }
 
-export default ClientNavBar;
+export default ClientNavbar;
