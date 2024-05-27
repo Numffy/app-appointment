@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
-function ClientNavbar({ session }) {
+function ClientNavbar() {
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    console.log("Menu toggle:", !isOpen);
   };
 
   return (
