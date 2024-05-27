@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { handler } from "../app/api/auth/[...nextauth]/route";
-import ClientNavbar from '../components/ClientNavBar';
+import ClientNavbar from '../components/ClientNavbar';
 
 async function NavBar() {
   const session = await getServerSession(handler);
