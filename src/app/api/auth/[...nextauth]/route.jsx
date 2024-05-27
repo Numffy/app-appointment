@@ -28,7 +28,7 @@ export const handler = NextAuth({
                 "Content-Type": "application/json",
               },
             }
-          );  
+          );
 
           const userdata = response.data;
 

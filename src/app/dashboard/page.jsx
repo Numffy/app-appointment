@@ -1,10 +1,8 @@
-"use client";
-
 import Form from "../../components/Form";
 
 function DashboardPage() {
   return (
-    <div >
+    <div>
       <Form />
     </div>
   );

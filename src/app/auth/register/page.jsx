@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 function RegisterPage() {
   const {
@@ -38,14 +39,17 @@ function RegisterPage() {
       if (error.response.data.detail.target === "PRIMARY")
         setErrorCC(error.response);
 
-      if (error.response.data.detail.target === "User_email_key")
+      if (error.response.data.error === "the cc field is expected to be unique")
         setErrorEmail(error.response);
     }
   });
 
   return (
-    <div className="h-[calc(100vh-1rem)] flex justify-center items-center ">
-      <form onSubmit={onSubmit} className="w-1/4  p-10 rounded-3xl">
+    <div className="h-screen flex justify-center items-center">
+      <form
+        onSubmit={onSubmit}
+        className="w-full max-w-md p-10 rounded-3xl bg-gray-800"
+      >
         {ErrorEmail && (
           <span className="bg-red-500 p-2 block mb-4 rounded-md font-bold">
             Este Email ya se encuentra en uso
@@ -56,31 +60,33 @@ function RegisterPage() {
             Este documento ya se encuentra en uso
           </span>
         )}
-        <h1 className="text-4xl font-bold text-black mb-5">Registrarse</h1>
+        <h1 className="text-4xl font-bold text-white mb-5 text-center">
+          Registrarse
+        </h1>
 
         <div>
           <label
             htmlFor="cc"
-            className="text-slate-500 text-sm font-bold mb-2 block"
+            className="text-white text-sm font-bold mb-2 block"
           >
             Numero de Documento
           </label>
           <input
-            type="cc"
+            type="text"
             {...register("cc", {
               required: {
                 value: true,
                 message: "El numero de documento es requerido",
               },
-              minLength:{
-                value:7,
-                message:"Minimo 7 caracteres en el documento"
-              }
+              minLength: {
+                value: 7,
+                message: "Minimo 7 caracteres en el documento",
+              },
             })}
             className="p-2 rounded block mb-2 bg-slate-900 text-slate-300 w-full"
           />
           {errors.cc && (
-            <span className="text-red-500 text-sm  block  font-bold">
+            <span className="text-red-500 text-sm block font-bold">
               {errors.cc.message}
             </span>
           )}
@@ -89,12 +95,12 @@ function RegisterPage() {
         <div>
           <label
             htmlFor="name"
-            className="text-slate-500 text-sm font-bold mb-2 block"
+            className="text-white text-sm font-bold mb-2 block"
           >
-            nombres
+            Nombres
           </label>
           <input
-            type="name"
+            type="text"
             {...register("name", {
               required: {
                 value: true,
@@ -104,7 +110,7 @@ function RegisterPage() {
             className="p-2 rounded block bg-slate-900 mb-2 text-slate-300 w-full"
           />
           {errors.name && (
-            <span className="text-sm text-red-500 font-bold block ">
+            <span className="text-sm text-red-500 font-bold block">
               {errors.name.message}
             </span>
           )}
@@ -113,12 +119,12 @@ function RegisterPage() {
         <div>
           <label
             htmlFor="last_name"
-            className="text-slate-500 text-sm font-bold mb-2 block"
+            className="text-white text-sm font-bold mb-2 block"
           >
             Apellidos
           </label>
           <input
-            type="last_name"
+            type="text"
             {...register("last_name", {
               required: {
                 value: true,
@@ -128,7 +134,7 @@ function RegisterPage() {
             className="p-2 rounded block bg-slate-900 mb-2 text-slate-300 w-full"
           />
           {errors.last_name && (
-            <span className="text-sm text-red-500 font-bold block ">
+            <span className="text-sm text-red-500 font-bold block">
               {errors.last_name.message}
             </span>
           )}
@@ -137,9 +143,9 @@ function RegisterPage() {
         <div>
           <label
             htmlFor="email"
-            className="text-slate-500 text-sm font-bold mb-2 block"
+            className="text-white text-sm font-bold mb-2 block"
           >
-            Correo Electronico
+            Correo Electrónico
           </label>
           <input
             type="email"
@@ -150,13 +156,13 @@ function RegisterPage() {
               },
               pattern: {
                 value: /^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$/,
-                message: "Correo no valido",
+                message: "Correo no válido",
               },
             })}
             className="p-2 rounded block bg-slate-900 mb-2 text-slate-300 w-full"
           />
           {errors.email && (
-            <span className="text-sm text-red-500 font-bold block ">
+            <span className="text-sm text-red-500 font-bold block">
               {errors.email.message}
             </span>
           )}
@@ -165,7 +171,7 @@ function RegisterPage() {
         <div>
           <label
             htmlFor="password"
-            className="text-slate-500 text-sm font-bold mb-2 block"
+            className="text-white text-sm font-bold mb-2 block"
           >
             Contraseña
           </label>
@@ -176,15 +182,15 @@ function RegisterPage() {
                 value: true,
                 message: "La contraseña es requerida",
               },
-              minLength:{
-                value:8,
-                message:"La contraseña debe tener al menos 8 caracteres"
-              }
+              minLength: {
+                value: 8,
+                message: "La contraseña debe tener al menos 8 caracteres",
+              },
             })}
             className="p-2 rounded block bg-slate-900 mb-2 text-slate-300 w-full"
           />
           {errors.password && (
-            <span className="text-sm text-red-500 font-bold block ">
+            <span className="text-sm text-red-500 font-bold block">
               {errors.password.message}
             </span>
           )}
@@ -192,8 +198,8 @@ function RegisterPage() {
 
         <div>
           <label
-            htmlFor="confirmPassword"
-            className="text-slate-500 text-sm font-bold mb-2 block"
+            htmlFor="confirm_password"
+            className="text-white text-sm font-bold mb-2 block"
           >
             Confirmar Contraseña
           </label>
@@ -208,22 +214,30 @@ function RegisterPage() {
                 if (value === watch("password")) {
                   return true;
                 }
-
-                return "La contraseña no coinciden";
+                return "Las contraseñas no coinciden";
               },
             })}
             className="p-2 rounded block bg-slate-900 mb-2 text-slate-300 w-full"
           />
           {errors.confirm_password && (
-            <span className="text-sm text-red-500 font-bold block ">
+            <span className="text-sm text-red-500 font-bold block">
               {errors.confirm_password.message}
             </span>
           )}
         </div>
+
         <div>
-          <button className="bg-amber-300 w-full p-2 rounded-lg text-slate-300 font-bold mt-2">
+          <button className="bg-amber-300 w-full p-2 rounded-lg text-slate-900  mt-2">
             Registrarme
           </button>
+          <div className="mt-2">
+            <p className="text-white">
+              Ya tienes una cuenta?
+              <Link className="text-blue-400 ml-2" href="/auth/login">
+                Iniciar Sesión
+              </Link>
+            </p>
+          </div>
         </div>
       </form>
     </div>
